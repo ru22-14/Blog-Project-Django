@@ -11,9 +11,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
-
-
 import dj_database_url
+from django.contrib.messages import constants as messages
 if os.path.isfile('env.py'):
     import env
 
@@ -29,7 +28,10 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
 ALLOWED_HOSTS = ['8000-ru2214-blogprojectdjang-8prmvwhth99.ws-eu101.gitpod.io', 'localhost','codestar-myblog-db0da9aab729.herokuapp.com']
 # ALLOWED_HOSTS = ['8000-ru2214-blogprojectdjang-8prmvwhth99.ws-eu101.gitpod.io/']
 
@@ -60,6 +62,15 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 LOGIN_REDIRECT_URL ='/'
 LOGOUT_REDIRECT_URL ='/'
+
+MESSAGE_TAGS = {
+    messages.DEBUG: 'alert-info', 
+    messages.INFO: 'alert-info', 
+    messages.SUCCESS: 'alert-success', 
+    messages.WARNING: 'alert-warning', 
+    messages.ERROR: 'alert-danger', 
+
+}
 
 CRISPY_FORMS_PACK = 'bootstarp5'
 
